@@ -10,7 +10,7 @@ server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
 try:
     server.login(sender, password)
-    server.sendmail(sender, "nightprofunkap@gmail.com", message)
+    server.sendmail(sender, sender, message)
 except:
     st.write('ERROR')
 from datetime import datetime as dtm
