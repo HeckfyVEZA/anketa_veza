@@ -106,23 +106,9 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 
 def write_json(new_data, filename=f'jsons_ankets/here_comes_jsons.txt'):
     with open(filename,'w') as file:
-          # First we load existing data into a dict.
-        
-        # Join new_data with file_data inside emp_details
-        # st.write(file_data)
         file.write(str(new_data))
         # file_data+=str(new_data)
         file.close()
-    # import github
-
-    # # g = github.Github(token)
-    # g = github.Github("HeckfyVEZA", "Agl863pqwerty")
-
-    # repo = g.get_user().get_repo("anketa_veza")
-    # file = repo.get_file_contents('jsons_ankets/here_comes_jsons.txt')
-
-    # # update
-    # repo.update_file('jsons_ankets/here_comes_jsons.txt', "message", file_data, file.sha)
         
  
     # python object to be appended
@@ -132,6 +118,6 @@ def json_click():
     import time
     time.sleep(1)
     from streamlit_js_eval import streamlit_js_eval
-    streamlit_js_eval(js_expressions="parent.window.location.reload()")
+    # streamlit_js_eval(js_expressions="parent.window.location.reload()")
 st.button("Отправить", on_click=json_click)
 
