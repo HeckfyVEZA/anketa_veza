@@ -22,6 +22,7 @@ def send_email(message, new_):
         msg['Subject'] = f"Анкета {new_['ФИО']}_{new_['Компания']}"
         mmm = MIMEText(r, "json")
         mmm.add_header('content-disposition', 'attachment', filename=f"Анкета {new_['ФИО']}_{new_['Компания']}.json")
+        msg.attach(MIMEText(message))
         msg.attach(mmm)
         # msg = MIMEText(message)
         server.sendmail(sender, sender, msg.as_string())
@@ -135,7 +136,7 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 def write_json(new_data, file_name):
     new_ = new_data
     # new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
-    new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()])
+    new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys() if not 'false' in str(new_data[key]).lower()])
     # st.write(new_data)
     # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
