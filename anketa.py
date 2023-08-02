@@ -10,7 +10,7 @@ def send_email(message):
     server.starttls()
     try:
         server.login(sender, password)
-        server.sendmail(sender, sender, "sooosos")
+        server.sendmail(sender, sender, message)
     except Exception as ex:
         st.write(ex)
 from datetime import datetime as dtm
