@@ -6,13 +6,13 @@ def send_email(message):
     sender = 'vevevedflgh@gmail.com'
     password = pwpw
 
-server = smtplib.SMTP('smtp.gmail.com', 587)
-server.starttls()
-try:
-    server.login(sender, password)
-    server.sendmail(sender, sender, "sooosos")
-except Exception as ex:
-    st.write(ex)
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    try:
+        server.login(sender, password)
+        server.sendmail(sender, sender, "sooosos")
+    except Exception as ex:
+        st.write(ex)
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
