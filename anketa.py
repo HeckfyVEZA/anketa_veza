@@ -1,4 +1,4 @@
-import streamlit as st
+simport streamlit as st
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
@@ -103,7 +103,7 @@ st.session_state['Звонок'] = st.checkbox('Звонок')
 st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
 import json
-def write_json(new_data, filename='ankets.json'):
+def write_json(new_data, filename='jsons_ankets/ankets.json'):
     with open(filename,'r+') as file:
           # First we load existing data into a dict.
         file_data = json.load(file)
