@@ -104,7 +104,7 @@ st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
 # name = jsons_ankets/here_comes_jsons.txt
 
-def write_json(new_data, filename=f'jsons_ankets/{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}'):
+def write_json(new_data, filename=f'jsons_ankets/{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}.txt'):
     with open(filename,'w') as file:
           # First we load existing data into a dict.
         
