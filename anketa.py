@@ -1,18 +1,26 @@
 import streamlit as st
 import cyrtranslit
-from email.mime.text import MIMEText
+from email.mime.text import MIMEText, MIMEMultipart
 pwpw = "kzdytbnxxssypkyo"
 st.set_page_config(layout="wide")
 import smtplib
-def send_email(message):
+def send_email(message, new_):
     sender = 'vevevedflgh@gmail.com'
     password = pwpw
-
+    import json
+    
+    r = new_
+    r = json.dumps(r)
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     try:
         server.login(sender, password)
-        msg = MIMEText(message)
+        msg = MIMEMultipart()
+        msg['From'] = sender
+        msg['To'] = sender
+        msg['Subject'] = f"Анкета {new_['ФИО']}_{new_['Компания']}"
+        msg.attach(MIMEText(r, "json"))
+        # msg = MIMEText(message)
         server.sendmail(sender, sender, msg.as_string())
     except Exception as ex:
         pass
@@ -122,13 +130,13 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 # name = jsons_ankets/here_comes_jsons.txt
 
 def write_json(new_data, file_name):
-    import pandas as pd
+    new_ = new_data
     # new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
     new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()])
     # st.write(new_data)
     # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
-    send_email(new_data)
+    send_email(new_data, new_)
 
 def json_click():
     write_json(dict(st.session_state), f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}')
