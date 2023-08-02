@@ -115,7 +115,7 @@ def write_json(new_data, filename='jsons_ankets/here_comes_jsons.txt'):
     import github
 
     # g = github.Github(token)
-    g = github.Github("HeckfyVEZA", "#ex7rT4nU9")
+    g = github.Github("HeckfyVEZA", "Agl863pqwerty")
 
     repo = g.get_user().get_repo("anketa_veza")
     file = repo.get_file_contents('jsons_ankets/here_comes_jsons.txt')
