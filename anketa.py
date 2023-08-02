@@ -21,7 +21,7 @@ def send_email(message, new_):
         msg['To'] = sender
         msg['Subject'] = f"Анкета {new_['ФИО']}_{new_['Компания']}"
         mmm = MIMEText(r, "json")
-        mmm.add_header('content-disposition', 'attachment', filename='f"Анкета {new_['ФИО']}_{new_['Компания']}".json')
+        mmm.add_header('content-disposition', 'attachment', filename=f"Анкета {new_['ФИО']}_{new_['Компания']}.json")
         msg.attach(mmm)
         # msg = MIMEText(message)
         server.sendmail(sender, sender, msg.as_string())
