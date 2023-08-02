@@ -1,5 +1,5 @@
 import streamlit as st
-import smtlib
+import smtplib
 def send_email(message):
     sender = 'vevevedflgh@gmail.com'
     password = 'qwerty123veza'
