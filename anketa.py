@@ -104,17 +104,13 @@ st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
 # name = jsons_ankets/here_comes_jsons.txt
 
-def write_json(new_data, filename=f'jsons_ankets/here_comes_jsons.txt'):
-    with open(filename,'w') as file:
-        st.write(new_data)
-        file.write(str(new_data))
-        # file_data+=str(new_data)
-        
- 
+def write_json(new_data, file_name):
+    import pandas as pd
+    pd.DataFrame(new_data).to_excel(f"jsons_ankets/{file_name}.xlsx", index=False)
     # python object to be appended
 
 def json_click():
-    write_json({f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}': dict(st.session_state)})
+    write_json(dict(st.session_state), f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}')
     import time
     time.sleep(1)
     from streamlit_js_eval import streamlit_js_eval
