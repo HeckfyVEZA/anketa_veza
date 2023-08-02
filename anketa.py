@@ -104,8 +104,8 @@ st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
 def json_click():
     import json
-    with open(f'jsons_ankets/{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}.json', 'w', encoding='utf-8') as fp:
-        json.dump(dict(st.session_state), fp)
+    with open('ankets.json', 'a', encoding='utf-8') as fp:
+        json.dump({f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}: dict(st.session_state}), fp)
     import time
     time.sleep(1)
     from streamlit_js_eval import streamlit_js_eval
