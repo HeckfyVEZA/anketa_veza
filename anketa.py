@@ -120,7 +120,7 @@ def write_json(new_data, filename='jsons_ankets/ankets.json'):
 def json_click():
     write_json({f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}': dict(st.session_state)})
     import time
-    time.sleep(1)
+    time.sleep(1000)
     from streamlit_js_eval import streamlit_js_eval
     streamlit_js_eval(js_expressions="parent.window.location.reload()")
 st.button("Отправить", on_click=json_click)
