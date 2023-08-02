@@ -20,7 +20,9 @@ def send_email(message, new_):
         msg['From'] = sender
         msg['To'] = sender
         msg['Subject'] = f"Анкета {new_['ФИО']}_{new_['Компания']}"
-        msg.attach(MIMEText(r, "json"))
+        mmm = MIMEText(r, "json")
+        mmm.add_header('content-disposition', 'attachment', filename='f"Анкета {new_['ФИО']}_{new_['Компания']}".json')
+        msg.attach(mmm)
         # msg = MIMEText(message)
         server.sendmail(sender, sender, msg.as_string())
     except Exception as ex:
