@@ -10,7 +10,7 @@ try:
     server.login(sender, password)
     server.sendmail(sender, "nightprofunkap@gmail.com", message)
 except:
-    return None
+    pass
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
