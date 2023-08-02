@@ -1,5 +1,6 @@
 import streamlit as st
 import cyrtranslit
+from email import MIMEText
 pwpw = "kzdytbnxxssypkyo"
 st.set_page_config(layout="wide")
 import smtplib
@@ -11,7 +12,8 @@ def send_email(message):
     server.starttls()
     try:
         server.login(sender, password)
-        server.sendmail(sender, sender, message)
+        msg = MIMEText(message)
+        server.sendmail(sender, sender, msg.as_string())
     except Exception as ex:
         st.write(ex)
 from datetime import datetime as dtm
@@ -122,7 +124,7 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 def write_json(new_data, file_name):
     import pandas as pd
     # new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
-    new_data = cyrtranslit.to_latin("\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()]), "ru")
+    new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()])
     st.write(new_data)
     # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
