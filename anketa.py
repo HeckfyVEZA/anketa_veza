@@ -1,9 +1,10 @@
 import streamlit as st
+pwpw = "kzdytbnxxssypkyo"
 st.set_page_config(layout="wide")
 import smtplib
 def send_email(message):
     sender = 'vevevedflgh@gmail.com'
-    password = 'qwerty123veza'
+    password = pwpw
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
