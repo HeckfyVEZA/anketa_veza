@@ -109,7 +109,6 @@ def write_json(new_data, filename=f'jsons_ankets/here_comes_jsons.txt'):
         st.write(new_data)
         file.write(str(new_data))
         # file_data+=str(new_data)
-        file.close()
         
  
     # python object to be appended
