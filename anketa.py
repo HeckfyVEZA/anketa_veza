@@ -15,7 +15,7 @@ def send_email(message):
         msg = MIMEText(message)
         server.sendmail(sender, sender, msg.as_string())
     except Exception as ex:
-        st.write(ex)
+        pass
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
@@ -125,7 +125,7 @@ def write_json(new_data, file_name):
     import pandas as pd
     # new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
     new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()])
-    st.write(new_data)
+    # st.write(new_data)
     # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
     send_email(new_data)
@@ -135,6 +135,6 @@ def json_click():
     import time
     time.sleep(1)
     from streamlit_js_eval import streamlit_js_eval
-    # streamlit_js_eval(js_expressions="parent.window.location.reload()")
+    streamlit_js_eval(js_expressions="parent.window.location.reload()")
 st.button("Отправить", on_click=json_click)
 
