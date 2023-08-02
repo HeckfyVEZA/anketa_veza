@@ -122,6 +122,6 @@ def json_click():
     import time
     time.sleep(1000)
     from streamlit_js_eval import streamlit_js_eval
-    # streamlit_js_eval(js_expressions="parent.window.location.reload()")
+    ############################################################################################################################### streamlit_js_eval(js_expressions="parent.window.location.reload()")
 st.button("Отправить", on_click=json_click)
 
