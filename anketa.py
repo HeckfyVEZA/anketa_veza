@@ -1,4 +1,4 @@
-simport streamlit as st
+import streamlit as st
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
