@@ -106,6 +106,7 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 
 def write_json(new_data, filename=f'jsons_ankets/here_comes_jsons.txt'):
     with open(filename,'w') as file:
+        st.write(new_data)
         file.write(str(new_data))
         # file_data+=str(new_data)
         file.close()
