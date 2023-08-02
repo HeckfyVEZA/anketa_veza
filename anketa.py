@@ -1,6 +1,7 @@
 import streamlit as st
 import cyrtranslit
-from email.mime.text import MIMEText, MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 pwpw = "kzdytbnxxssypkyo"
 st.set_page_config(layout="wide")
 import smtplib
