@@ -110,7 +110,7 @@ def write_json(new_data, filename=f'jsons_ankets/{"_".join(st.session_state["Ð¤Ð
         
         # Join new_data with file_data inside emp_details
         # st.write(file_data)
-        file.write(new_data)
+        file.write(str(new_data))
         # file_data+=str(new_data)
         file.close()
     # import github
