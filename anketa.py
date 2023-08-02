@@ -106,6 +106,7 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 
 def write_json(new_data, file_name):
     import pandas as pd
+    new_data = {key:{0:new_data[key]} for key in new_data.keys()}
     pd.DataFrame(new_data).to_excel(f"jsons_ankets/{file_name}.xlsx", index=False)
     # python object to be appended
 
