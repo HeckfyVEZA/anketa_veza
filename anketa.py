@@ -104,24 +104,25 @@ st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
 # name = jsons_ankets/here_comes_jsons.txt
 
-def write_json(new_data, filename='jsons_ankets/here_comes_jsons.txt'):
-    with open(filename,'r+') as file:
+def write_json(new_data, filename=f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}'):
+    with open(filename,'w') as file:
           # First we load existing data into a dict.
-        file_data = file.readlines()
+        
         # Join new_data with file_data inside emp_details
         # st.write(file_data)
-        file_data+=str(new_data)
+        file.write(new_data)
+        # file_data+=str(new_data)
         file.close()
-    import github
+    # import github
 
-    # g = github.Github(token)
-    g = github.Github("HeckfyVEZA", "Agl863pqwerty")
+    # # g = github.Github(token)
+    # g = github.Github("HeckfyVEZA", "Agl863pqwerty")
 
-    repo = g.get_user().get_repo("anketa_veza")
-    file = repo.get_file_contents('jsons_ankets/here_comes_jsons.txt')
+    # repo = g.get_user().get_repo("anketa_veza")
+    # file = repo.get_file_contents('jsons_ankets/here_comes_jsons.txt')
 
-    # update
-    repo.update_file('jsons_ankets/here_comes_jsons.txt', "message", file_data, file.sha)
+    # # update
+    # repo.update_file('jsons_ankets/here_comes_jsons.txt', "message", file_data, file.sha)
         
  
     # python object to be appended
