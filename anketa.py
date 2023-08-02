@@ -1,4 +1,5 @@
 import streamlit as st
+st.set_page_config(layout="wide")
 import smtplib
 def send_email(message):
     sender = 'vevevedflgh@gmail.com'
@@ -15,7 +16,7 @@ from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
 # components.iframe("https://docs.streamlit.io/en/latest")
-st.set_page_config(layout="wide")
+
 st.session_state['date'] = dtm.today().strftime('%d.%m.%Y')
 st.write(st.session_state['date'])
 st.markdown('<p style="font-size:48px; color:#26822F"><b>АНКЕТА ПОСЕТИТЕЛЯ ВЫСТАВКИ</b></p>', unsafe_allow_html=True)
