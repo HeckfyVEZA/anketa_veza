@@ -1,4 +1,16 @@
 import streamlit as st
+import smtlib
+def send_email(message):
+    sender = 'vevevedflgh@gmail.com'
+    password = 'qwerty123veza'
+
+server = smtplib.SMTP('smtp.gmail.com', 587)
+server.starttls()
+try:
+    server.login(sender, password)
+    server.sendmail(sender, "nightprofunkap@gmail.com", message)
+except:
+    return None
 from datetime import datetime as dtm
 import pandas as pd
 import streamlit.components.v1 as components
@@ -106,9 +118,10 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 
 def write_json(new_data, file_name):
     import pandas as pd
-    new_data = {key:{0:new_data[key]} for key in new_data.keys()}
-    pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
+    new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
+    # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
+    send_email(new_data)
 
 def json_click():
     write_json(dict(st.session_state), f'{"_".join(st.session_state["ФИО"].split())}_{"_".join(st.session_state["Компания"].split())}')
