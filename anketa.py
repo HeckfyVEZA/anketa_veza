@@ -102,18 +102,27 @@ st.session_state['Письмо'] = st.checkbox('Письмо')
 st.session_state['Звонок'] = st.checkbox('Звонок')
 st.session_state['Встреча'] = st.checkbox('Встреча')
 st.session_state['Приоритет обработки'] = st.radio('Приоритет обработки', options=('A', 'B', "C"), horizontal=True)
-import json
-def write_json(new_data, filename='jsons_ankets/ankets.json'):
+# name = jsons_ankets/here_comes_jsons.txt
+
+def write_json(new_data, filename='jsons_ankets/here_comes_jsons.txt'):
     with open(filename,'r+') as file:
           # First we load existing data into a dict.
-        file_data = json.load(file)
+        file_data = file.readlines()
         # Join new_data with file_data inside emp_details
         # st.write(file_data)
-        file_data["consumer_info"].append(new_data)
-        # # Sets file's current position at offset.
-        file.seek(0)
-        # # convert back to json.
-        json.dump(file_data, file, indent = 4)
+        file_data+=str(new_data)
+        file.close()
+    import github
+
+    # g = github.Github(token)
+    g = github.Github(login, password)
+
+    repo = g.get_user().get_repo("anketa_veza")
+    file = repo.get_file_contents('jsons_ankets/here_comes_jsons.txt')
+
+    # update
+    repo.update_file('jsons_ankets/here_comes_jsons.txt', "message", file_data, file.sha)
+        
  
     # python object to be appended
 
