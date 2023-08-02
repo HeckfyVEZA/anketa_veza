@@ -1,4 +1,5 @@
 import streamlit as st
+import cyrtranslit
 pwpw = "kzdytbnxxssypkyo"
 st.set_page_config(layout="wide")
 import smtplib
@@ -121,7 +122,7 @@ st.session_state['Приоритет обработки'] = st.radio('Приор
 def write_json(new_data, file_name):
     import pandas as pd
     # new_data = str({key:{0:new_data[key]} for key in new_data.keys()})
-    new_data = "\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()]).encode("utf-8").decode("ascii","ignore")
+    new_data = cyrtranslit.to_latin("\n".join([f'{key}: {new_data[key]}' for key in new_data.keys()]), "ru")
     st.write(new_data)
     # pd.DataFrame(new_data).to_excel(f"{file_name}.xlsx", index=False)
     # python object to be appended
