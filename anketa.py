@@ -1,5 +1,5 @@
 import streamlit as st
-pwpw = "kzdytbnxxssypkyo"
+pwpw = "kzdy tbnx xssy pkyo"
 st.set_page_config(layout="wide")
 import smtplib
 def send_email(message):
