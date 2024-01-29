@@ -36,7 +36,7 @@ import streamlit.components.v1 as components
 st.session_state['date'] = dtm.today().strftime('%d.%m.%Y')
 st.write(st.session_state['date'])
 st.markdown('<p style="font-size:48px; color:#26822F"><b>АНКЕТА ПОСЕТИТЕЛЯ ВЫСТАВКИ</b></p>', unsafe_allow_html=True)
-heads = ('«Армия-2023»', '«Нева-2023» ')
+heads = ('«AirVent-2024»', '«Нева-2023» ')
 hcol = st.columns(6)
 with hcol[0]:
     st.header(heads[0])
